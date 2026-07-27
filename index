@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCFE Interview Prep - Cristina Prego</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root,
+    [data-theme="light"] {
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfbf9;
+      --color-surface-2: #f1eee8;
+      --color-border: #d7d2c8;
+      --color-text: #24211d;
+      --color-text-muted: #6d695f;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --color-accent: #d19900;
+      --shadow-sm: 0 2px 8px rgba(36, 33, 29, 0.06);
+      --shadow-md: 0 8px 24px rgba(36, 33, 29, 0.09);
+      --radius-sm: 0.5rem;
+      --radius-md: 0.85rem;
+      --radius-lg: 1.25rem;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --text-xs: 0.8rem;
+      --text-sm: 0.95rem;
+      --text-base: 1rem;
+      --text-lg: 1.2rem;
+      --text-xl: 1.75rem;
+      --text-2xl: 2.3rem;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Work Sans', Arial, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #181714;
+      --color-surface: #211f1b;
+      --color-surface-2: #2a2722;
+      --color-border: #3a3732;
+      --color-text: #ece7df;
+      --color-text-muted: #b1a99c;
+      --color-primary: #62aab0;
+      --color-primary-hover: #7bbbc0;
+      --color-accent: #efbc44;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.28);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--color-primary);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+      z-index: 1000;
+      background: var(--color-primary);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: center;
+      padding: var(--space-4) 0;
+    }
+
+    .brand {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+    }
+
+    .logo-mark {
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      line-height: 1.1;
+    }
+
+    .subhead,
+    .eyebrow {
+      margin: 0;
+    }
+
+    .subhead {
+      color: var(--color-text-muted);
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      border-radius: 999px;
+      padding: 0.65rem 0.85rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      min-height: calc(100vh - 84px);
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      padding: var(--space-6);
+      position: sticky;
+      top: 84px;
+      height: calc(100vh - 84px);
+      overflow: auto;
+    }
+
+    .sidebar nav {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .nav-btn {
+      text-align: left;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--color-text);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: var(--color-surface);
+      border-color: var(--color-border);
+    }
+
+    .main-content {
+      padding: var(--space-8);
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .hero-card,
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-card {
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-card h2,
+    .card h2,
+    .card h3 {
+      margin-top: 0;
+      font-family: var(--font-display);
+      line-height: 1.1;
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--space-6);
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .question-wrap {
+      max-width: 980px;
+    }
+
+    .question-text {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+
+    .question-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .ghost-btn {
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 600;
+      font-family: var(--font-body);
+    }
+
+    .primary-btn {
+      background: var(--color-primary);
+      color: white;
+      border: none;
+    }
+
+    .primary-btn:hover {
+      background: var(--color-primary-hover);
+    }
+
+    .secondary-btn {
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .ghost-btn {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .answer-box {
+      margin-top: var(--space-5);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .audio-player {
+      width: 100%;
+      margin-top: var(--space-3);
+    }
+
+    .star-label {
+      display: inline-block;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .star-block {
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
+    code {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 0.15rem 0.35rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.9rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+
+    th {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface));
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        top: auto;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .grid.two,
+      .grid.three {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        padding: var(--space-4);
+      }
+
+      .header-row {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="44" height="44" role="img" aria-label="Cristina Prego logo">
+            <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M20 42V22h15c6 0 10 3 10 8 0 4-2 6.5-5.5 7.5L45 42h-6.5l-5-6.5H26V42zM26 30h8c3 0 5-1.5 5-4s-2-4-5-4h-8z" fill="currentColor"></path>
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">Interview prep webapp</p>
+          <h1>NCFE Assessment Design Lead</h1>
+          <p class="subhead">Cristina Prego</p>
+        </div>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch theme" title="Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav aria-label="Main navigation">
+        <button class="nav-btn active" data-section="overview">Overview</button>
+        <button class="nav-btn" data-section="profile">My profile</button>
+        <button class="nav-btn" data-section="research">Research & ORCID</button>
+        <button class="nav-btn" data-section="regulation">Regulation & QA</button>
+        <button class="nav-btn" data-section="examples">Examples</button>
+        <button class="nav-btn" data-section="questions">Questions practice</button>
+        <button class="nav-btn" data-section="star">Full STAR answers</button>
+        <button class="nav-btn" data-section="audio">Audio files</button>
+      </nav>
+    </aside>
+
+    <main id="main-content" class="main-content">
+      <section id="overview" class="panel active">
+        <div class="hero-card">
+          <p class="eyebrow">Role snapshot</p>
+          <h2>What this role needs</h2>
+          <p>
+            NCFE’s Assessment Design Lead role centres on leading the design and review of valid,
+            reliable and compliant assessments for new and existing qualifications, ensuring they
+            meet strategic intent, regulatory expectations and stakeholder needs. [web:69][web:71]
+          </p>
+          <p>
+            The role also requires collaboration with subject experts, internal teams and wider
+            stakeholders, which is why this preparation combines assessment design, regulatory
+            awareness, quality assurance, leadership and evidence-led judgement. [web:69][web:98]
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>Key strengths to show</h3>
+            <ul>
+              <li>Assessment strategy and specification design. [web:69][web:71]</li>
+              <li>Validity, reliability, comparability and accessibility. [web:158][web:160]</li>
+              <li>Quality assurance, standardisation and evidence-based review. [file:119][file:151]</li>
+              <li>Leadership with SMEs, centres and internal teams. [web:69][web:98]</li>
+              <li>Research-informed and AI-aware assessment thinking. [file:154][web:167][web:177]</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>My quick positioning</h3>
+            <p>
+              My recent work focuses on assessment development, quality assurance, external
+              examining and end-point assessment across vocational education, apprenticeships,
+              teacher education and higher education. [file:119][file:151]
+            </p>
+            <p>
+              My URJC teaching role is part-time and semester-based, so I am fully motivated to
+              move into a substantive UK assessment design lead role. [file:119][file:156]
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="profile" class="panel">
+        <div class="card">
+          <p class="eyebrow">Memorise this</p>
+          <h2>My profile</h2>
+          <p>
+            My recent career has focused on assessment development, quality assurance, external
+            examining and end-point assessment across vocational education, apprenticeships,
+            teacher education and higher education. I interpret qualification specifications,
+            learning outcomes, assessment criteria, apprenticeship assessment plans and
+            organisational guidance; review assessment evidence and decisions; contribute to
+            standardisation; identify risks or inconsistencies; and produce clear, evidence-based
+            feedback. [file:119][file:151]
+          </p>
+          <p>
+            Alongside this, I hold a PhD in Education and part-time teaching roles at Universidad
+            Rey Juan Carlos, where I design and deliver modules with continuous assessment and
+            clear learner-centred guidance. [file:119][file:156]
+          </p>
+        </div>
+      </section>
+
+      <section id="research" class="panel">
+        <div class="grid two">
+          <article class="card">
+            <p class="eyebrow">Research profile</p>
+            <h2>ORCID and research identity</h2>
+            <p>
+              My ORCID is
+              <a href="https://orcid.org/0000-0001-7997-7700" target="_blank" rel="noopener noreferrer">
+                0000-0001-7997-7700
+              </a>. [web:167]
+            </p>
+            <p>
+              My research focuses on literacy, audiovisual literacy and quality in education,
+              and extends into social sciences didactics, citizenship education, digital media
+              and AI-related conceptual frameworks. [web:167][web:177]
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="eyebrow">How to frame it</p>
+            <h2>Why this matters for NCFE</h2>
+            <p>
+              This research background means I approach assessment design as an evidence-led
+              process: I look carefully at what is being measured, how authentic the task is,
+              what kinds of responses it elicits, and how different learners may experience it. [web:167][web:177]
+            </p>
+            <p>
+              It also strengthens my ability to connect assessment practice with wider debates
+              about quality, fairness, authenticity and AI. [web:177][web:185]
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="regulation" class="panel">
+        <div class="grid two">
+          <article class="card">
+            <p class="eyebrow">Core regulatory language</p>
+            <h2>Ofqual essentials</h2>
+            <ul>
+              <li>Fitness for purpose. [web:160]</li>
+              <li>Validity. [web:158][web:159]</li>
+              <li>Reliability. [web:158][web:159]</li>
+              <li>Comparability. [web:158][web:159]</li>
+              <li>Manageability. [web:158]</li>
+              <li>Minimising bias. [web:158]</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="eyebrow">My language</p>
+            <h2>How I would speak about QA</h2>
+            <p>
+              I work explicitly with validity, reliability, comparability, accessibility and
+              minimising bias, alongside manageability and controls around assessment quality. [web:158][web:160]
+            </p>
+            <p>
+              I also locate and apply current regulatory guidance rather than relying on memory,
+              and I treat assessment strategies and specifications as living documents that need
+              review and evidence-led improvement. [file:151][web:160]
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="examples" class="panel">
+        <div class="grid two">
+          <article class="card">
+            <span class="pill">URJC</span>
+            <h3>Didactics of Social Sciences II</h3>
+            <p>
+              A continuous assessment model combining written test, group project, case study
+              and commentary, with explicit rules on pass thresholds, re-evaluation, plagiarism,
+              writing quality and learner obligations. [file:156]
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="pill">AI project</span>
+            <h3>TeacherAID</h3>
+            <p>
+              An ethically approved AI-in-education instrument using consent screens, factorial
+              vignettes, sliders, explanatory text and card sorting to capture nuanced teacher
+              judgement. [file:154][file:155]
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="pill">Quality assurance</span>
+            <h3>External examining and EPA</h3>
+            <p>
+              External examiner for PGCE/SCITT and IB, plus independent end-point assessment for
+              the Teaching Assistant Apprenticeship Standard, all requiring evidence-based, fair
+              and compliant decisions. [file:119][file:151]
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="pill">Research-informed practice</span>
+            <h3>Heritage, citizenship and aesthetic pedagogy</h3>
+            <p>
+              Research-informed assessment tasks rooted in social sciences, heritage, creativity,
+              critical citizenship and authentic practice rather than generic theory. [file:140][file:141][file:145]
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="questions" class="panel">
+        <div class="card question-wrap">
+          <p class="eyebrow">Practice mode</p>
+          <h2>Competency questions</h2>
+          <p id="question-text" class="question-text">Loading question...</p>
+
+          <div class="question-actions">
+            <button id="show-answer" class="primary-btn">Show answer</button>
+            <button id="next-question" class="secondary-btn">Next question</button>
+          </div>
+
+          <div id="answer-box" class="answer-box hidden">
+            <p id="answer-text"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="star" class="panel">
+        <div class="card">
+          <p class="eyebrow">Full answers</p>
+          <h2>STAR answers to learn and adapt</h2>
+
+          <div class="star-block">
+            <span class="star-label">STAR 1</span>
+            <h3>Research and evidence-led assessment redesign at URJC</h3>
+            <p><strong>Question:</strong> Can you give an example of how you used research and evidence to redesign an assessment?</p>
+            <p><strong>Situation:</strong> In my role as a lecturer at Universidad Rey Juan Carlos, I was responsible for redesigning the assessment model for Didactics of Social Sciences II. The previous approach relied too heavily on a final written exam and did not fully reflect the critical, reflective and practical competences the programme wanted students to develop. [file:156]</p>
+            <p><strong>Task:</strong> My task was to create a more authentic and transparent assessment strategy aligned with the learning outcomes and informed by research on literacy, audiovisual literacy and citizenship education. [file:156][web:167]</p>
+            <p><strong>Action:</strong> I reviewed the module outcomes and university regulations, then drew on current research and good practice in social sciences didactics and citizenship education. Based on that, I designed a continuous assessment model that combined a written test, a group project using heritage or audiovisual materials, a case study analysis and a written commentary on quality in education. I also wrote very explicit guidance for students, including weightings, minimum pass thresholds, re-evaluation rules, plagiarism expectations and writing quality requirements, and I refined the model through discussion with colleagues. [file:156][web:185]</p>
+            <p><strong>Result:</strong> The result was a more coherent and authentic assessment model that gave students multiple ways to demonstrate what they knew and could do. It improved transparency, aligned more closely with the module aims and produced grade patterns that better matched the range of performance we observed. [file:156]</p>
+          </div>
+
+          <div class="star-block">
+            <span class="star-label">STAR 2</span>
+            <h3>TeacherAID and AI-related evidence-led design</h3>
+            <p><strong>Question:</strong> Can you give an example of how you used research and evidence to design an assessment or instrument related to AI?</p>
+            <p><strong>Situation:</strong> In the TeacherAID project, we needed an instrument that could capture teachers’ nuanced judgements about AI in education, rather than just collecting generic opinions or simple attitude scores. [file:154][file:155]</p>
+            <p><strong>Task:</strong> My task was to help design a research and assessment instrument that was ethically sound, methodologically robust and practical for busy professionals, while producing rich and analysable data. [file:154][file:155]</p>
+            <p><strong>Action:</strong> I reviewed literature on AI in education, teacher decision-making and attitude measurement, and used that evidence to help shape a multi-component instrument. It included a clear information and consent stage, factorial vignettes presenting realistic AI scenarios, and response formats such as sliders, ranking tasks and card sorting. We iteratively piloted and refined the wording, structure and scales to improve clarity, support analysis and minimise bias, while keeping alignment with ethical approval and good research practice. [file:154][file:155][web:158][web:185]</p>
+            <p><strong>Result:</strong> The result was a richer and more robust instrument that captures how teachers weigh opportunities, risks and contextual factors around AI. For me, it is a strong example of combining theory, evidence, ethics and practical design to build an assessment instrument that is both rigorous and usable. [file:154][file:155]</p>
+          </div>
+
+          <div class="star-block">
+            <span class="star-label">STAR 3</span>
+            <h3>How my research profile shapes assessment design</h3>
+            <p><strong>Question:</strong> How does your research profile influence your approach to assessment design?</p>
+            <p><strong>Situation:</strong> Alongside my assessment and QA roles, I have developed a research profile documented in my ORCID record, including work on literacy, audiovisual literacy, social sciences didactics, citizenship education and AI-related conceptual frameworks. [web:167][web:177]</p>
+            <p><strong>Task:</strong> My ongoing task has been to ensure that this research does not sit separately from practice, but actively informs how I design, review and quality-assure assessments across different settings. [web:167][web:177]</p>
+            <p><strong>Action:</strong> In practice, this means I start from questions familiar in the research literature: what is being measured, how authentic the task is, what kinds of responses it is likely to elicit, and how different groups may experience the assessment. My work on audiovisual literacy and heritage encourages me to use multimodal, contextualised tasks, and my work on citizenship and AI pushes me to prioritise critical thinking, judgement and ethical reflection. I also keep up with research and regulatory discussions on validity, reliability, comparability and minimising bias, and I use those concepts explicitly when I evaluate or improve assessment strategies. [web:167][web:177][file:140][file:141][web:158][web:185]</p>
+            <p><strong>Result:</strong> The result is that my assessment work is consistently evidence-informed. When I propose an assessment strategy or revision, it is grounded in a combination of practical experience, regulatory expectations and current research, rather than habit or intuition alone. [web:177][web:185]</p>
+          </div>
+
+          <div class="star-block">
+            <span class="star-label">STAR 4</span>
+            <h3>Regulation and compliance through QA roles</h3>
+            <p><strong>Question:</strong> Describe a situation where you ensured assessments complied with regulations or organisational requirements.</p>
+            <p><strong>Situation:</strong> In my external examiner and end-point assessment roles, I regularly worked with programme specifications, learning outcomes, assessment criteria, apprenticeship assessment plans and organisational guidance. [file:119][file:151]</p>
+            <p><strong>Task:</strong> My task was to review whether assessment decisions, marking and evidence were aligned with those requirements and whether standards were being applied consistently and fairly. [file:119][file:151]</p>
+            <p><strong>Action:</strong> I reviewed sampled work and decisions against the relevant frameworks, identified inconsistencies or risks, provided evidence-based written feedback and contributed to standardisation and action planning. I also checked my work against current regulatory expectations around validity, reliability, comparability, manageability and minimising bias, rather than relying on assumptions. [file:151][web:158][web:160]</p>
+            <p><strong>Result:</strong> This supported clearer and more consistent decision-making, stronger documentation and more confidence that assessments were being delivered fairly and compliantly. [file:151]</p>
+          </div>
+
+          <div class="star-block">
+            <span class="star-label">STAR 5</span>
+            <h3>AI and authentic assessment</h3>
+            <p><strong>Question:</strong> How has AI changed your thinking about assessment design?</p>
+            <p><strong>Situation:</strong> As AI tools have become more widely available, purely theoretical written tasks have become more vulnerable to generic or tool-generated responses. [file:154][web:177]</p>
+            <p><strong>Task:</strong> My task has been to rethink assessment design so that it still captures genuine learning, professional judgement and authentic application. [file:154][file:156]</p>
+            <p><strong>Action:</strong> In my teaching, QA and research work, I have increasingly prioritised scenario analysis, contextual judgement, multimodal tasks and reflective justification. TeacherAID reinforced the value of realistic vignettes and nuanced response formats, and in my URJC work I favour tasks that require learners to interpret situations, justify choices and connect theory to practice. [file:154][file:155][file:156]</p>
+            <p><strong>Result:</strong> This produces assessments that are more robust in an AI-rich environment and more closely aligned with the kinds of thinking and decision-making that matter in real educational and professional contexts. [file:154][file:156]</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="audio" class="panel">
+        <div class="card">
+          <p class="eyebrow">Audio revision</p>
+          <h2>Suggested MP3 filenames</h2>
+          <p>
+            If you want to extend this later, create an <code>audio</code> folder and add
+            recordings using these names:
+          </p>
+          <ul>
+            <li><code>audio/research-urjc.mp3</code></li>
+            <li><code>audio/research-teacheraid.mp3</code></li>
+            <li><code>audio/research-orcid.mp3</code></li>
+            <li><code>audio/regulation.mp3</code></li>
+            <li><code>audio/ai-assessment.mp3</code></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const panels = document.querySelectorAll('.panel');
+    const themeToggle = document.getElementById('themeToggle');
+    const answerBox = document.getElementById('answer-box');
+    const answerText = document.getElementById('answer-text');
+    const questionText = document.getElementById('question-text');
+    const showAnswerBtn = document.getElementById('show-answer');
+    const nextQuestionBtn = document.getElementById('next-question');
+
+    const questions = [
+      {
+        question: "Can you give an example of how you used research and evidence to redesign an assessment?",
+        answer: "I redesigned the assessment model for the URJC module Didactics of Social Sciences II. The previous model relied mostly on a final written exam, which did not reflect the critical, reflective and practical competences the programme aimed for. I reviewed the learning outcomes, university regulations and research on literacy, audiovisual literacy and citizenship education, and designed a continuous assessment model combining a written test, a group project using heritage or audiovisual materials, a case study and a commentary focused on quality in education. I defined clear weightings, minimum pass thresholds, re-evaluation rules, plagiarism and writing expectations and shared the design with colleagues for feedback. The new model is better aligned with the aims, gives students multiple ways to show what they know and can do, and has improved both transparency and the coherence of grade distributions."
+      },
+      {
+        question: "Can you give an example of how you used research and evidence to design an assessment or instrument related to AI?",
+        answer: "TeacherAID is a good example. We needed an instrument to capture teachers’ nuanced judgements about AI in education, rather than just simple attitude scores. I reviewed literature on AI in education, teacher decision-making and attitude measurement, and we designed a multi-component instrument with an ethical consent screen, factorial vignettes that simulate realistic AI scenarios, and response formats such as sliders, rankings and card sorting. We iteratively piloted and refined the wording and scales to ensure clarity, to minimise bias and to produce data that support the analyses we planned. The result is an instrument that provides rich, structured evidence on how teachers weigh opportunities, risks and contextual factors around AI, and it shows how I combine theory, methodology and practical constraints in assessment design."
+      },
+      {
+        question: "How does your research profile influence your approach to assessment design?",
+        answer: "My research profile, documented in my ORCID record, covers literacy, audiovisual literacy, social sciences didactics, citizenship education and AI-related conceptual frameworks. This means I approach assessment design with research questions in mind: what exactly are we measuring, how authentic is the task, what kinds of responses we will elicit, and how different learner groups might experience the assessment. My work on audiovisual literacy and heritage leads me to use contextualised, multimodal tasks rather than only traditional written exams, and my work on citizenship and AI encourages me to emphasise critical thinking, judgement and ethical reflection."
+      },
+      {
+        question: "Describe a situation where you ensured assessments complied with regulations or organisational requirements.",
+        answer: "My external examiner and end-point assessment roles are strong examples. I interpret programme specifications, learning outcomes, assessment criteria, apprenticeship assessment plans and organisational guidance, and then review sampled work and decisions against those frameworks. I identify inconsistencies or risks, provide structured written feedback and contribute to standardisation and action planning. I also explicitly cross-check with current regulatory guidance, particularly around validity, reliability, comparability, manageability and minimising bias, rather than relying on assumptions."
+      },
+      {
+        question: "How has AI changed your thinking about assessment design?",
+        answer: "AI has increased the risk that purely theoretical written tasks can be completed by tools rather than learners. In response, I design and recommend assessments that foreground scenario analysis, authentic application and reflective judgement. Projects like TeacherAID have reinforced the value of realistic vignettes and rich response formats, and in my teaching and QA work I prioritise tasks where learners have to interpret context, make decisions and justify their reasoning. This keeps the focus on the thinking and professional judgement we really want to see."
+      },
+      {
+        question: "What do you bring to NCFE beyond practical assessment experience?",
+        answer: "Beyond hands-on assessment and QA experience, I bring a strong research-informed perspective. My ORCID profile shows ongoing work on literacy, audiovisual literacy, social sciences didactics, citizenship education and AI-related frameworks. That means when I design or review assessments, I connect practice with current research on how assessments influence learning, equity and professional practice, and I deliberately use concepts like validity, reliability, comparability, accessibility and bias when I evaluate and improve assessment strategies."
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function showSection(sectionId) {
+      panels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === sectionId);
+      });
+
+      navButtons.forEach(button => {
+        button.classList.toggle('active', button.dataset.section === sectionId);
+      });
+    }
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        showSection(button.dataset.section);
+      });
+    });
+
+    function renderQuestion(index) {
+      const item = questions[index];
+      questionText.textContent = item.question;
+      answerText.textContent = item.answer;
+      answerBox.classList.add('hidden');
+    }
+
+    showAnswerBtn.addEventListener('click', () => {
+      answerBox.classList.remove('hidden');
+    });
+
+    nextQuestionBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % questions.length;
+      renderQuestion(currentIndex);
+    });
+
+    (function initTheme() {
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      themeToggle.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+      });
+    })();
+
+    renderQuestion(0);
+    showSection('overview');
+  </script>
+</body>
+</html>
